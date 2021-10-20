@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Opener</title>
+    <style type="text/css">
+        #url-input-area{
+            width:60%;
+            margin:10px;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <textarea id="url-input-area" placeholder="PUT URLS HERE"></textarea>
+        <button id="open-URLs">OPEN URLS</button>
+    </form>
+    <script type="text/javascript">
+        let openButton = document.getElementById('open-URLs')
+
+        function openAllURLs(URLlist){
+            if (URLlist[0] === ""){
+                alert("NOTHING ENTERED, DUMMY!")
+                return;
+            } 
+            console.log(URLlist)
+            URLlist.forEach(url => window.open(url, "_blank"))
+        
+        }
+        
+        openButton.addEventListener('click', (event)=>{
+            event.preventDefault();
+            let urlText = document.getElementById('url-input-area').value.trim().split('\n');
+            openAllURLs(urlText);
+        });
+    </script>
+</body>
+
+</html>
